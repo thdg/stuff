@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>JS-BF</title>
+    <link rel="stylesheet" href="bs/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bs/css/bootstrap-theme.min.css">
+    <style type="text/css">
+    	body {
+    		background-color: #344499;
+    	}
+    	.header {
+    		padding-bottom: 15px;
+    		margin-bottom: 15px;
+    		border-bottom: 1px solid #cccccc;
+    	}
+    	.container {
+        min-height: 100%;
+    		max-width: 760px;
+    		background-color: #eeeeee;
+    		padding: 0 40px;
+    		padding-bottom: 30px;
+    	}
+      .form-control {
+        border-radius: 1px;
+      }
+      select.form-control {
+        padding: 1px;
+        padding-left: 6px;
+      }
+    	@media screen and (max-width: 768px) {
+    		.container {
+    			padding: 0 20px;
+    		}
+    	}
+    </style>
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="bs/js/bootstrap.min.js"></script>
+    <script src="BF.js"></script>
+    <script src="adapter.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2 class="text">Javascript Brainfuck interpreter</h2>
+      </div>
+      <div class="row">
+	      <div class="col-lg-12">
+	        <form role="form" class="bf-controler">
+	          <div class="form-group">
+	            <label for="input">Input Tape:</label>
+	            <input type="text" class="form-control" id="input" placeholder="Input string">
+	          </div>
+	          <div class="form-group">
+	            <label for="memory">Memory Tape Size: ( default: 30.000 )</label>
+	            <input type="number" class="form-control" id="memory" placeholder="30000" value="30000">
+	          </div>
+            <div class="form-group">
+              <label for="sample-programs">Sample Programs:</label>
+              <select class="form-control" id="sample-programs">
+                <option data-program=""></option>
+                <option data-program="helloworld.b">Hello World!</option>
+                <option data-program="helloworld-short.b">Hello World! (block)</option>
+                <option data-program="rot13.b">Rot13</option>
+                <option data-program="reverse.b">Reverse</option>
+                <option data-program="fibo.b">Fibo</option>
+              </select>
+            </div>
+	          <div class="form-group">
+	            <label for="program">Program Tape:</label>
+	            <textarea type="text" class="form-control" id="program" rows=10></textarea>
+	          </div>
+	        </form>
+	        <form role="form" class="bf-controler">
+	          <div class="form-group">
+	            <label for="output">Output:</label>
+	            <textarea disabled type="text" class="form-control" id="output" rows=5></textarea>
+	          </div>
+	        </form>
+          <div class="">
+            <button type="button" class="btn btn-default" id="run">Run Program</button>
+            <button type="button" class="btn btn-default" id="clear">Clear Output</button>
+          </div>
+	      </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    $(document).ready(function() {
+      $('.bf-controler #sample-programs').change(function(){
+        var file = $('.bf-controler #sample-programs option:selected').data('program');
+        if (file!=='') { 
+          $.get('progr/'+file, function(data) {
+            $('.bf-controler #program').val(data);
+          }); 
+        } else { $('.bf-controler #program').val(''); }
+      });
+      $('#clear').click(function() {
+        $('#output').val('');
+      })
+      var r = Math.random()*(99-34)+34;
+      var g = Math.random()*(99-34)+34;
+      var b = Math.random()*(99-34)+34;
+      var color = '#' + Math.floor(r) + Math.floor(g) + Math.floor(b);
+      $('body').css('background-color',color);
+    });
+  </script>
+</html>

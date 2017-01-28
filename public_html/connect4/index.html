@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>Connect 4</title>
+    <style>
+        body {
+            background-color: #fbfbfb;
+            font-family: helvetica;
+            margin: 0;
+        }
+        #kyle {
+            width: 100%;
+            text-align: center;
+            font-size: 32px;
+            color: #444;
+        }
+        a {
+            text-decoration: none;
+            color: #5B85C8;
+        }
+        a:hover {
+            color: #4B67C3;
+        }
+        .container {
+            display: block;
+            max-width: 700px;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .nav {
+            width: 100%;
+            height: 50px;
+            background-color: #444;
+        }
+        .nav .header {
+            font-size: 28px;
+            color: #eee;
+            padding: 8px 24px 0px;
+        }
+        .game {
+            width: 700px;
+            height: 600px;
+        }
+        .game table {
+            width: 100%;
+            height: 100%;
+        }
+        .game td {
+            background-color: #fff;
+            width: 14.286%;
+            border-radius: 50%;
+            border: 1px solid #e2e2e2;
+        }
+        .game td:hover {
+            background-color: #e2e2e2;
+        }
+        .game td.p1 {
+            border: 0px;
+            background-color: #ffa700;
+        }
+        .game td.p1:hover {
+            border: 0px;
+            background-color: #ffa700;
+        }
+        .game td.p2:hover {
+            border: 0px;
+            background-color: #2dc6ff;
+        }
+        .game td.p2 {
+            border: 0px;
+            background-color: #2dc6ff;
+        }
+            
+    </style>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-39880865-2', 'hi.is');
+      ga('send', 'pageview');
+    </script>
+</head>
+<body>
+    <div class="nav">
+        <h1 class="header">Connect 4</h1>
+    </div>
+    <div class="container">
+        <div id="board" class="game">
+            <table><tbody>
+                <tr>
+                    <td class="cell" data-cell="0" ></td>
+                    <td class="cell" data-cell="1" ></td>
+                    <td class="cell" data-cell="2" ></td>
+                    <td class="cell" data-cell="3" ></td>
+                    <td class="cell" data-cell="4" ></td>
+                    <td class="cell" data-cell="5" ></td>
+                    <td class="cell" data-cell="6" ></td>
+                </tr>
+                <tr>
+                    <td class="cell" data-cell="7" ></td>
+                    <td class="cell" data-cell="8" ></td>
+                    <td class="cell" data-cell="9" ></td>
+                    <td class="cell" data-cell="10" ></td>
+                    <td class="cell" data-cell="11" ></td>
+                    <td class="cell" data-cell="12" ></td>
+                    <td class="cell" data-cell="13" ></td>
+                </tr>
+                <tr>
+                    <td class="cell" data-cell="14" ></td>
+                    <td class="cell" data-cell="15" ></td>
+                    <td class="cell" data-cell="16" ></td>
+                    <td class="cell" data-cell="17" ></td>
+                    <td class="cell" data-cell="18" ></td>
+                    <td class="cell" data-cell="19" ></td>
+                    <td class="cell" data-cell="20" ></td>
+                </tr>
+                <tr>
+                    <td class="cell" data-cell="21" ></td>
+                    <td class="cell" data-cell="22" ></td>
+                    <td class="cell" data-cell="23" ></td>
+                    <td class="cell" data-cell="24" ></td>
+                    <td class="cell" data-cell="25" ></td>
+                    <td class="cell" data-cell="26" ></td>
+                    <td class="cell" data-cell="27" ></td>
+                </tr>
+                <tr>
+                    <td class="cell" data-cell="28" ></td>
+                    <td class="cell" data-cell="29" ></td>
+                    <td class="cell" data-cell="30" ></td>
+                    <td class="cell" data-cell="31" ></td>
+                    <td class="cell" data-cell="32" ></td>
+                    <td class="cell" data-cell="33" ></td>
+                    <td class="cell" data-cell="34" ></td>
+                </tr>
+                <tr>
+                    <td class="cell" data-cell="35" ></td>
+                    <td class="cell" data-cell="36" ></td>
+                    <td class="cell" data-cell="37" ></td>
+                    <td class="cell" data-cell="38" ></td>
+                    <td class="cell" data-cell="39" ></td>
+                    <td class="cell" data-cell="40" ></td>
+                    <td class="cell" data-cell="41" ></td>
+                </tr>
+            </tbody></table>
+        </div>
+        <h1 id="kyle"></h1>
+    </div>
+    <script type="text/javascript" src="Board.js"></script>
+    <script type="text/javascript" src="Kyle.js"></script>
+    <script type="text/javascript" src="connect4.js"></script>
+</body>
+</html>

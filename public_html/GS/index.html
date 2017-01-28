@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head prefix="og: http://ogp.me/ns fb: http://ogp.me/ns/fb">
+		<title>MWlongsword.com - Galaxy Square</title>
+		<link rel="shortcut icon" href="galaxy.png" />
+		<link rel="icon" href="galaxy.png" />
+		
+		<meta property="og:title" content="Galaxy Square" />
+		<meta property="og:type" content="Game" />
+		<meta property="og:url" content="http://www.MWlongsword.com" />
+		<meta property="og:image" content="galaxy.png" />
+		<meta property="og:site_name" content="MWlongsword.com - Galaxy Square" />
+		<meta property="og:description" content="" />
+		
+		<link href='https://fonts.googleapis.com/css?family=Quantico:700' rel='stylesheet' type='text/css'>
+		<link href="galaxy.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="container">
+			<div id="head">
+				<h1>Galaxy Square</h1>
+			</div>
+			<div id="game">
+				<canvas id="galaxy" width="500" height="500" >
+					There seems to be no support HTML5 canvas, try updating your browser!
+				</canvas>
+				<h2 id="score"></h2>
+				<h2 id="menu"></h2>
+			</div>
+			<div id="footer">
+				<p> Controls: Left and right arrow keys or A and D.</p>
+				<p> Objective: Don't get hit.</p>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="webgl-utils.js"></script>
+	<script type="text/javascript" src="initShaders.js"></script>
+	<script type="text/javascript" src="glMatrixEA.js"></script>
+	<script type="text/javascript" src="galaxySquare.js"></script>
+</html>

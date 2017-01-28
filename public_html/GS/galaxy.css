@@ -1,0 +1,88 @@
+html,body
+{
+	background-image:url('satinweave.png');
+	background-color: #555555;
+	height: 100%;
+	margin: 0px;
+}
+#container
+{
+	background-image:url('escheresque_ste.png');
+	display: block;
+	background-color: #333333;
+	margin-left: auto;
+	margin-right: auto;
+	width: 700px;
+	min-height: 100%;
+	border-style: solid;
+	border-color: #222222;
+	border-width: 4px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+}
+#head
+{
+	color: black;
+	margin-left: auto;
+	margin-right: auto;
+	color: black;
+	width: 500px;
+}
+#footer
+{
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 20px;
+	width: 500px;
+	color:white;
+}
+#game
+{
+	position: relative;
+	color: black;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 500px;
+}
+#galaxy
+{
+	position: absolute;
+}
+h2
+{
+	margin: 0px;
+	color: white;
+	font-family:"Quantico", sans-serif;
+	font-size:25px;
+}
+#menu
+{
+	position: absolute;
+	margin: 0px;
+	text-align: center;
+	top: 300px;
+	width: 500px;
+}
+#score
+{
+	position: absolute;
+	margin-left: 10px;
+	top: 20px;
+	left: 20px;
+}
+h1
+{
+	margin: 0px;
+	font-family:"Quantico", sans-serif;
+	text-align: center;
+	color:white;
+	font-size:70px;
+}
+p
+{
+	font-family:"Quantico", sans-serif;
+	text-align: center;
+	color:white;
+}
