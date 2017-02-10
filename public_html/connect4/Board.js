@@ -1,5 +1,8 @@
-function Board() {
-	this.state = this.start_state;
+function Board(state) {
+	if (state)
+		this.state = state;
+	else
+		this.state = this.start_state;
 }
 Board.prototype.start_state = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 Board.prototype.winning_locations = [
@@ -80,7 +83,7 @@ Board.prototype.simulate = function (player,action) {
     var x = action, y = 0;
     while (y+1<this.height && newstate[x+(y+1)*this.width]===0) y++;
     newstate[x+y*this.width] = player;
-    return newstate;
+    return new Board(newstate);
 }
 Board.prototype.checkForWinner = function() {
 	for (var i=0; i<this.winning_locations.length; i++) {

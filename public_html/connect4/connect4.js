@@ -46,15 +46,16 @@ Game.prototype.restart = function() {
 	this.game_over = false;
 	this.board.clean();
 	this.emulator.clean();
-	this.active_player = 1;
-	this.play(kyle.getAction(game.board, game.active_player));
-	kyle.say("Of course! I'll start.");
+	this.active_player = Math.random() < 0.5 ? 1 : -1;
+	if (this.active_player == -1)
+		this.play(kyle.getAction(game.board, game.active_player));
+	kyle.say("Of course you do!");
 	ga('send', 'event', 'Connect 4', 'New Game');
 	g_player_turn = true;
 }
 Game.prototype.play = function(action) {
 	var player, ap = this.active_player;
-	this.board.state = this.board.simulate(ap, action);
+	this.board = this.board.simulate(ap, action);
 	this.emulator.emulate(ap, action);
 	this.active_player *= -1;
 	var winner = this.board.checkForWinner();
@@ -114,7 +115,7 @@ window.onload = function() {
 
 				if (winner !== 0) {
 					var words = "";
-					if (winner === 1) words = "Yayyy I won! ";
+					if (winner === -1) words = "Yayyy I won! ";
 					else words = "What?! You won! ";
 					ga('send', 'event', "Connect 4", "Game Over",  winner === 1 ? "AI" : "User");
 					kyle.say(words+'Rematch? <a href="#" onclick="ga(\'send\', \'event\', \'Connect 4\', \'Rematch\'); game.restart();">Yes</a>');
