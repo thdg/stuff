@@ -1,93 +1,203 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Þorsteinn.is</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+          crossorigin="anonymous">
     <style>
-        body {
-            background-color: #fbfbfb;
-            font-family: helvetica;
-            margin: 0;
-        }
-        a {
-            text-decoration: none;
-            color: white;
-        }
-        .container {
-            display: block;
-            max-width: 700px;
-            margin-top: 50px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .nav {
+        .jumbotron {
+            background-color: white;
+            padding-top: 100px;
+            padding-bottom: 100px;
+            position: fixed;
             width: 100%;
-            height: 50px;
-            background-color: #444;
+            top: 0px;
+            right: 0px;
+            left: 0px;
+            height: auto;
+            z-index: -1;
         }
-        .nav .header {
-            font-size: 28px;
-            color: #eee;
-            padding: 8px 24px 0px;
+        .shield {
+            width: 140px;
+            margin-bottom: 50px;
         }
-        .box {
-            height: 150px;
-            border: 1px solid #444;
-            margin: 10px;
-            padding: 20px;
-            background-color: #5b85c8;
+        .content {
+            position: relative;
+            margin-top: 470px;
+            padding-top: 50px;
+            padding-bottom: 100px;
+            background-color: #2F3B7C;
+            //border-top: 40px white dashed;
         }
-        .box h1 { 
-            margin-top: 55px;
-            color: white;
-            text-shadow: 0 0 18px #000;
+        .content::before {
+            content: "";
+            width: 100%;
+            height: 40px;
+            position: relative;
+            display: block;
+            top: -90px;
+            background-size: 25%;
+            background-image: linear-gradient(
+              to right,
+              #2F3B7C,
+              #2F3B7C 25%,
+              transparent 25%,
+              transparent 75%,
+              #2F3B7C 75%,
+              #2F3B7C 25%
+            );
+        }
+        .content-heading {
+            color: #fdfdfd;
             text-align: center;
         }
-        .box.c4 {
-            background-image: url("img/connect4.png");
+        .content-heading + hr {
+            border-color: rgba(255, 255, 255, .2);
         }
-        .box.gs {
-            background-image: url("img/gs.png");
+        .card {
+            margin-top: 30px;
+            border: none;
         }
-        .box.bf {
-            background-image: url("img/bf.png");
+        .card .card-img-top {
+            width: 100%;
         }
-        .box.bo {
-            background-image: url("img/bo.png");
-        }
-        .box.kef {
-            background-color: rgb(250,79,3);
+
+        .footer {
+            padding-top: 40px;
+            padding-bottom: 40px;
         }
     </style>
 </head>
 <body>
-    <div class="nav">
-        <h1 class="header">THDG</h1>
+    <div></div>
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <img src="img/shield.png" title="..." class="shield">
+            <h1 class="jumbotron-heading">Þorsteinn Daði Gunnarsson</h1>
+        </div>
+    </section>
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="content-heading display-4">Stuff I made</h2>
+                    <hr/>
+                </div>
+            </div>
+            <div class="row d-flex">
+                <div class="col-sm-6 align-self-stretch">
+                    <div class="card">
+                      <img class="card-img-top" src="img/connect4.png" title="Connect 4">
+                      <div class="card-block">
+                        <h4 class="card-title">Connect 4</h4>
+                        <p class="card-text">AI for Connect 4.</p>
+                      </div>
+                      <div class="card-block">
+                        <a href="connect4/" class="card-link">Demo</a>
+                        <a href="https://github.com/thdg/stuff/tree/master/public_html/connect4"
+                           class="card-link">Source</a>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 align-self-stretch">
+                    <div class="card">
+                      <img class="card-img-top" src="img/bo.png" title="Bricks">
+                      <div class="card-block">
+                        <h4 class="card-title">Bricks</h4>
+                        <p class="card-text">Breakout with way too much fluff.</p>
+                      </div>
+                      <div class="card-block">
+                        <a href="bricks/" class="card-link">Demo</a>
+                        <a href="https://github.com/thdg/stuff/tree/master/public_html/bricks"
+                           class="card-link">Source</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row d-flex">
+                <div class="col-sm-6 align-self-stretch">
+                    <div class="card">
+                      <img class="card-img-top" src="img/bf.png" title="Brainfuck">
+                      <div class="card-block">
+                        <h4 class="card-title">Brainfuck interpreter</h4>
+                        <p class="card-text">Brainfuck interpreter in JavaScript.</p>
+                      </div>
+                      <div class="card-block">
+                        <a href="BF/" class="card-link">Demo</a>
+                        <a href="https://github.com/thdg/stuff/tree/master/public_html/BF"
+                           class="card-link">Source</a>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 align-self-stretch">
+                    <div class="card">
+                      <img class="card-img-top" src="img/gs.png" title="Galaxy square">
+                      <div class="card-block">
+                        <h4 class="card-title">Galaxy Square</h4>
+                        <p class="card-text">Game made with JavaScript and webGL.</p>
+                      </div>
+                      <div class="card-block">
+                        <a href="GS/" class="card-link">Demo</a>
+                        <a href="https://github.com/thdg/stuff/tree/master/public_html/GS"
+                           class="card-link">Source</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                      <img class="card-img-top" src="img/kefair.jpg" title="KefAir">
+                      <div class="card-block">
+                        <h4 class="card-title">KefAir</h4>
+                        <p class="card-text">App for Android with departure and arrival times for Keflavík Airport.</p>
+                      </div>
+                      <div class="card-block">
+                        <a href="https://play.google.com/store/apps/details?id=com.mwlongsword.kefair"
+                           target="_blank" class="card-link">Demo</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="container">
-        <a href="connect4/">
-            <div class="box c4">
-                <h1>Connect 4</h1>
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <ul>
+                        <li>
+                            <a href="https://github.com/thdg">My Github</a>
+                        </li>
+                        <li>
+                            <a href="www.linkedin.com/in/thorsteinndadi">LinkedIn profile</a>
+                        </li>
+                        <li>
+                            <a href="https://mwlongsword.com">mwlongsword.com</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </a>
-        <a href="bricks/">
-            <div class="box bo">
-                <h1>Breakout</h1>
-            </div>
-        </a>
-        <a href="BF/">
-            <div class="box bf">
-                <h1>Brainfuck compiler</h1>
-            </div>
-        </a>
-        <a href="GS/">
-            <div class="box gs">
-                <h1>Galaxy Square</h1>
-            </div>
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=com.mwlongsword.kefair">
-            <div class="box kef">
-                <h1>KefAir</h1>
-            </div>
-        </a>
+        </div>
     </div>
+
+    <script>
+        var jumbo = document.querySelector(".jumbotron");
+        document.onscroll = function(e) {
+            jumbo.style.marginTop = -document.body.scrollTop/2 + "px";
+        };
+    </script>
 </body>
 </html>
