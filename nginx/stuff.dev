@@ -9,5 +9,10 @@ server {
 	location / {
 		autoindex on;
 	}
+
+	location /api/ {
+		# Proxy
+		proxy_pass	http://localhost:5000/;
+	}
 }
 

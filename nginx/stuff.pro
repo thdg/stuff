@@ -14,5 +14,10 @@ server {
 	
 	location / {
 	}
+
+	location /api/ {
+		# Proxy
+		proxy_pass	http://localhost:5000/;
+	}
 }
 

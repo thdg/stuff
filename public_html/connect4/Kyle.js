@@ -7,7 +7,7 @@ Kyle.prototype.getAction = function(board, player) {
 	var maxv = Number.NEGATIVE_INFINITY, maxv_index = 0;
 	for (var i = 0; i < a.length; i++) {
 		var nextState = board.simulate(player, a[i]);
-		var v = this.alphabeta(nextState, 5, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY, player*-1);
+		var v = this.alphabeta(nextState, 7, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY, player*-1);
 		console.log(v);
 		if (v > maxv) {
 			maxv = v;
