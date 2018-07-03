@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="is">
+    <head>
+        <title>Örnefni</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="css/simple-grid.css">
+        <link rel="stylesheet" href="css/ornefni.css">
+    </head>
+    <body>
+
+        <div class="header">
+            <div class="container">
+                <h1 class="title">Örnefni</h1>
+                <div class="row">
+                    <div class="tabs col-12">
+                        <div class="tab map selected">
+                            <h2>Kort</h2>
+                        </div>
+                        <div class="tab npc">
+                            <h2>Persóna</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="forms">
+            <div class="container">
+                <form class="map" action="">
+                    <div class="row groups">
+                        <div class="col-4 col-sm-12">
+                            <div class="radio-button active">
+                                <input type="radio" id="sveit" name="group" value="sveit" selected/>
+                                <label for="sveit">Sveit</label>
+                            </div>
+                            <div class="radio-button">
+                                <input type="radio" id="land" name="group" value="land" />
+                                <label for="land">Landörnefni</label>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-12">
+                            <div class="radio-button">
+                                <input type="radio" id="vatn" name="group" value="vatn" />
+                                <label for="vatn">Vatnaörnefni</label>
+                            </div>
+                            <div class="radio-button">
+                                <input type="radio" id="borg" name="group" value="borg" />
+                                <label for="borg">Þéttbýli</label>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-12">
+                            <div class="radio-button">
+                                <input type="radio" id="sjor" name="group" value="sjor" />
+                                <label for="sjor">Sjávarörnefni</label>
+                            </div>
+                            <div class="radio-button">
+                                <input type="radio" id="jokull" name="group" value="jokull" />
+                                <label for="jokull">Jökla- og snævarörnefni</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button">
+                        <button type="button">Búa til örnefni</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="names">
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-6">
+                        <ul>
+                            <li>
+                                <a href="https://github.com/thdg">My Github</a>
+                            </li>
+                            <li>
+                                <a href="www.linkedin.com/in/thorsteinndadi">LinkedIn profile</a>
+                            </li>
+                            <li>
+                                <a href="https://mwlongsword.com">mwlongsword.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 col-6">
+                        <img src="../img/shield-50.png" title="Azure, a tower argent." width="50px" class="float-right"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var radios = document.querySelectorAll(".radio-button");
+            for (var i = 0; i < radios.length; i++) {
+                radios[i].addEventListener('click', function(event) {
+
+                    for (var i = 0; i < radios.length; i++) {
+                        radios[i].classList.remove("active");
+                    }
+                    this.classList.add("active");
+                });
+            }
+
+            function renderNames(names) {
+                var container = document.querySelector(".names");
+                var list = document.createElement("ul");
+                for (var i = 0; i < names.length; i++) {
+                    var item = document.createElement("li")
+                    item.innerHTML = names[i];
+                    list.appendChild(item);
+                }
+                container.innerHTML = "";
+                container.appendChild(list);
+            }
+
+            function getNames(group, n, seed, filter) {
+                var url = [
+                    "/api/ornefni",
+                    group,
+                    n,
+                    ""].join("/");
+                if (seed) url += seed + "/"
+                if (filter) url += "?ekkitil=1"
+
+                var callback = function(response) {
+                    var names = response["names"];
+                    renderNames(names);
+                }
+
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function() {
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                        callback(xmlHttp.response);
+                }
+                xmlHttp.responseType = 'json';
+                xmlHttp.open("GET", url, true); // true for asynchronous
+                xmlHttp.send(null);
+            }
+
+            document.querySelector(".button button").onclick = function(event) {
+                var group = document.querySelector("form.map .radio-button.active input").value;
+                getNames(group, 11, "", true);
+            }
+        </script>
+    </body>
+</html>

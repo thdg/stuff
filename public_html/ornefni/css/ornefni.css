@@ -1,0 +1,129 @@
+
+.header {
+    background-color: #2c1d4e;
+}
+.header h1 {
+    color: white;
+}
+.title {
+    text-align: center;
+    font-size: 70px;
+    padding: 100px 0px;
+    margin: 0;
+}
+
+.forms {
+    background-color: #fff5e7;
+
+    border-top: 2px solid #c09005;
+    margin-top: -2px;
+}
+.names {
+    border: 2px solid #c09005;
+    border-left: none;
+    border-right: none;
+}
+
+.names ul {
+    margin: 30px auto;
+    width: 400px;
+    padding: 30px 80px;
+    border: 1px solid #ddd;
+}
+
+.footer {
+    padding: 30px 0;
+
+    background-color: #242227;
+    color: white;
+}
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+.footer ul {
+    list-style: none;
+    margin: 0;
+}
+.footer img {
+    float: right;
+}
+
+.tabs {
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.tab {
+    display: inline-block;
+    text-align: center;
+    width: 200px;
+    height: 60px;
+    margin: 0px 2px;
+
+    border-radius: 5px 5px 0px 0px;
+    background-color: #fff5e7;
+    border: 2px solid #c09005;
+
+    line-height: 2;
+}
+.tab.selected {
+    border-bottom-color: #fff5e7;
+}
+.tab h2 {
+    margin: 0;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.groups .radio-button {
+    border: 1px solid #ffe4bf;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.radio-button input {
+    display: none;
+}
+.radio-button label {
+    padding: 5px 10px;
+    margin: 0px;
+    display: block;
+    cursor: pointer;
+}
+.radio-button.active {
+    background-color: #ffe4bf;
+}
+
+.button {
+    text-align: center;
+    padding: 10px 20px 30px;
+}
+.button button {
+    border: none;
+    border-radius: 5px;
+    background-color: #8f0f0f;
+    color: white;
+    padding: 10px 30px;
+
+    cursor: pointer;
+}
+.button button:hover,
+.button button:active,
+.button button:focus {
+    background-color: #690c0c;
+}
+
+.icon {
+  display: block;
+  text-indent: -9999px;
+  width: 100px;
+  height: 82px;
+  background-size: 100px 82px;
+}
+.icon-map {
+  background: url(../icons/baseline-map-24px.svg);
+}
+.icon-npc {
+  background: url(../icons/baseline-face-24px.svg);
+}

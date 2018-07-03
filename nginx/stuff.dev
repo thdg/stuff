@@ -2,17 +2,17 @@ server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 
-	root /home/thorsteinn/projects/stuff/public_html;
+	root /home/thorsteinn/stuff/stuff/public_html;
 
 	index index.html index.htm;
-	
+
 	location / {
 		autoindex on;
 	}
 
-	location /api/ {
+	location /api/ornefni/ {
 		# Proxy
+		rewrite /api/ornefni/(.*) /$1 break;
 		proxy_pass	http://localhost:5000/;
 	}
 }
-
