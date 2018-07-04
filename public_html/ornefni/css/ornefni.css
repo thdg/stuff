@@ -19,6 +19,13 @@ h1, h2, h3, h4 {
     margin: 0;
 }
 
+@media only screen and (max-width: 719px) {  /* 720px */
+    .title {
+        font-size: 30px;
+        padding: 20px;
+    }
+}
+
 .forms {
     background-color: #fff6da;
 
@@ -42,6 +49,18 @@ h1, h2, h3, h4 {
     background-color: #fff6da;
     list-style: none;
     font-family: "Oldenburg";
+}
+
+@media only screen and (max-width: 719px) {  /* 720px */
+    .names {
+        padding: 0px;
+        min-height: 0;
+    }
+    .names ul {
+        margin: 0px auto;
+        width: auto;
+        padding: 20px 30px;
+    }
 }
 
 .names ul:before {
@@ -118,6 +137,15 @@ h1, h2, h3, h4 {
     font-size: 28px;
 }
 
+@media only screen and (max-width: 719px) {  /* 720px */
+    .tab {
+        width: 45%;
+        height: 50px;
+    }
+    .tab h2 {
+        font-size: 22px;
+    }
+}
 .groups {
     padding: 25px 0 15px;
 }
@@ -173,4 +201,15 @@ h1, h2, h3, h4 {
 
 form.hidden {
     display: none;
+}
+
+
+@media only screen and (max-width: 719px) {  /* 720px */
+    .heraldry {
+        text-align: center;
+    }
+    .heraldry img {
+        margin: 50px 0px;
+        float: none;
+    }
 }
