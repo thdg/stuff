@@ -208,10 +208,21 @@
                 xmlHttp.send(null);
             }
 
+            var canSubmit = true;
             var forms = document.querySelectorAll("form")
             for (var i = 0; i < forms.length; i++) {
                 forms[i].onsubmit = function(event) {
                     event.preventDefault();
+                    if (!canSubmit) {
+                        return;
+                    }
+
+                    // Prevent submitting to often
+                    canSubmit = false;
+                    window.setTimeout(function() {
+                        canSubmit = true;
+                    }, 350);
+
                     var form = event.target;
                     var group = form.querySelector(".radio-button.active input").value;
                     var seed = form.querySelector(".seed input").value;
