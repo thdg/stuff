@@ -32,13 +32,16 @@ h1, h2, h3, h4 {
     border-top: 2px solid #c09005;
 }
 .names {
-    background-color: #fff6da; // old partchment #fff5e7;
+    background-color: #fff6da;
     padding: 20px 0;
     min-height: 250px;
 }
-
+.names .error {
+    color: #c01313;
+    text-align: center;
+}
 .names ul {
-    margin: 30px auto;
+    margin: 0px auto;
     width: 400px;
     padding: 30px 80px;
 
@@ -168,6 +171,21 @@ h1, h2, h3, h4 {
 .radio-button.active {
     background-color: #fbecc1;
     border-color: #bc9528;
+}
+
+.seed {
+    text-align: center;
+    font-family: "Oldenburg";
+}
+.seed label {
+    display: block;
+}
+.seed input {
+    margin: 0 auto;
+    border: 3px double #bc9528;
+    border-radius: 2px;
+    margin: 10px 0;
+    padding: 8px 20px;
 }
 
 .button {

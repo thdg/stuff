@@ -70,9 +70,14 @@
                         </div>
                     </div>
 
+                    <div class="seed">
+                        <label for="map-seed">Forskeyti:</label>
+                        <input id="map-seed" type="text" name="seed" />
+                    </div>
+
                     <div class="button">
                         <div class="wrapper">
-                            <button type="button">Búa til örnefni</button>
+                            <button>Búa til örnefni</button>
                         </div>
                     </div>
                 </form>
@@ -98,9 +103,14 @@
                         </div>
                     </div>
 
+                    <div class="seed">
+                        <label for="npc-seed">Forskeyti:</label>
+                        <input id="npc-seed" type="text" name="seed" />
+                    </div>
+
                     <div class="button">
                         <div class="wrapper">
-                            <button type="button">Búa til örnefni</button>
+                            <button>Búa til örnefni</button>
                         </div>
                     </div>
                 </form>
@@ -108,8 +118,6 @@
         </div>
 
         <div class="names">
-            <ul>
-            </ul>
         </div>
 
         <div class="footer">
@@ -139,7 +147,6 @@
             var radios = document.querySelectorAll(".radio-button");
             for (var i = 0; i < radios.length; i++) {
                 radios[i].addEventListener('click', function(event) {
-                    console.log(this);
                     var radios = this.closest("form").querySelectorAll(".radio-button");
                     for (var i = 0; i < radios.length; i++) {
                         radios[i].classList.remove("active");
@@ -160,6 +167,15 @@
                 container.appendChild(list);
             }
 
+            function renderError() {
+                var container = document.querySelector(".names");
+                var error = document.createElement("h3");
+                error.innerHTML = "Fann engin örnefni";
+                error.classList.add("error")
+                container.innerHTML = "";
+                container.appendChild(error);
+            }
+
             function getNames(group, n, seed, filter) {
                 var url = [
                     "/api/ornefni",
@@ -174,21 +190,32 @@
                     renderNames(names);
                 }
 
+                var error = function() {
+                    renderError();
+                }
+
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.onreadystatechange = function() {
-                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
                         callback(xmlHttp.response);
+                    }
+                    else if (xmlHttp.readyState == 4) {
+                        error();
+                    }
                 }
                 xmlHttp.responseType = 'json';
-                xmlHttp.open("GET", url, true); // true for asynchronous
+                xmlHttp.open("GET", url, true);
                 xmlHttp.send(null);
             }
 
-            var buttons = document.querySelectorAll(".button button")
-            for (var i = 0; i < buttons.length; i++) {
-                buttons[i].onclick = function(event) {
-                    var group = event.target.closest("form").querySelector(".radio-button.active input").value;
-                    getNames(group, 11, "", true);
+            var forms = document.querySelectorAll("form")
+            for (var i = 0; i < forms.length; i++) {
+                forms[i].onsubmit = function(event) {
+                    event.preventDefault();
+                    var form = event.target;
+                    var group = form.querySelector(".radio-button.active input").value;
+                    var seed = form.querySelector(".seed input").value;
+                    getNames(group, 11, seed, true);
                 }
             }
         </script>
