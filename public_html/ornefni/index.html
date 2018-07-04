@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="stylesheet" href="css/simple-grid.css">
+        <link href="https://fonts.googleapis.com/css?family=Eagle+Lake|Oldenburg" rel="stylesheet">
         <link rel="stylesheet" href="css/ornefni.css">
     </head>
     <body>
@@ -16,10 +17,10 @@
                 <h1 class="title">Örnefni</h1>
                 <div class="row">
                     <div class="tabs col-12">
-                        <div class="tab map selected">
+                        <div data-tab="map" class="tab map selected">
                             <h2>Kort</h2>
                         </div>
-                        <div class="tab npc">
+                        <div data-tab="npc" class="tab npc">
                             <h2>Persóna</h2>
                         </div>
                     </div>
@@ -29,13 +30,15 @@
 
         <div class="forms">
             <div class="container">
-                <form class="map" action="">
+                <form id="map" class="map" action="">
                     <div class="row groups">
                         <div class="col-4 col-sm-12">
                             <div class="radio-button active">
                                 <input type="radio" id="sveit" name="group" value="sveit" selected/>
                                 <label for="sveit">Sveit</label>
                             </div>
+                        </div>
+                        <div class="col-4 col-sm-12">
                             <div class="radio-button">
                                 <input type="radio" id="land" name="group" value="land" />
                                 <label for="land">Landörnefni</label>
@@ -46,6 +49,8 @@
                                 <input type="radio" id="vatn" name="group" value="vatn" />
                                 <label for="vatn">Vatnaörnefni</label>
                             </div>
+                        </div>
+                        <div class="col-4 col-sm-12">
                             <div class="radio-button">
                                 <input type="radio" id="borg" name="group" value="borg" />
                                 <label for="borg">Þéttbýli</label>
@@ -56,6 +61,8 @@
                                 <input type="radio" id="sjor" name="group" value="sjor" />
                                 <label for="sjor">Sjávarörnefni</label>
                             </div>
+                        </div>
+                        <div class="col-4 col-sm-12">
                             <div class="radio-button">
                                 <input type="radio" id="jokull" name="group" value="jokull" />
                                 <label for="jokull">Jökla- og snævarörnefni</label>
@@ -64,13 +71,45 @@
                     </div>
 
                     <div class="button">
-                        <button type="button">Búa til örnefni</button>
+                        <div class="wrapper">
+                            <button type="button">Búa til örnefni</button>
+                        </div>
+                    </div>
+                </form>
+                <form id="npc" class="npc hidden" action="">
+                    <div class="row groups">
+                        <div class="col-4 col-sm-12">
+                            <div class="radio-button active">
+                                <input type="radio" id="kk" name="group" value="kk" selected/>
+                                <label for="kk">Drenjanöfn</label>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-12">
+                            <div class="radio-button">
+                                <input type="radio" id="kvk" name="group" value="kvk" />
+                                <label for="kvk">Stúlkunöfn</label>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-12">
+                            <div class="radio-button">
+                                <input type="radio" id="milli" name="group" value="milli" />
+                                <label for="milli">Millinöfn</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button">
+                        <div class="wrapper">
+                            <button type="button">Búa til örnefni</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
 
         <div class="names">
+            <ul>
+            </ul>
         </div>
 
         <div class="footer">
@@ -100,7 +139,8 @@
             var radios = document.querySelectorAll(".radio-button");
             for (var i = 0; i < radios.length; i++) {
                 radios[i].addEventListener('click', function(event) {
-
+                    console.log(this);
+                    var radios = this.closest("form").querySelectorAll(".radio-button");
                     for (var i = 0; i < radios.length; i++) {
                         radios[i].classList.remove("active");
                     }
@@ -144,9 +184,31 @@
                 xmlHttp.send(null);
             }
 
-            document.querySelector(".button button").onclick = function(event) {
-                var group = document.querySelector("form.map .radio-button.active input").value;
-                getNames(group, 11, "", true);
+            var buttons = document.querySelectorAll(".button button")
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].onclick = function(event) {
+                    var group = event.target.closest("form").querySelector(".radio-button.active input").value;
+                    getNames(group, 11, "", true);
+                }
+            }
+        </script>
+
+        <script>
+            var tabs = document.querySelectorAll(".tab");
+            var forms = document.querySelectorAll("form");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].addEventListener('click', function(event) {
+
+                    for (var i = 0; i < tabs.length; i++) {
+                        tabs[i].classList.remove("selected");
+                    }
+                    this.classList.add("selected");
+
+                    for (var i = 0; i < forms.length; i++) {
+                        forms[i].classList.add("hidden");
+                    }
+                    document.querySelector("form#"+this.dataset["tab"]).classList.remove("hidden");
+                });
             }
         </script>
     </body>

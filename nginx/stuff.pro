@@ -11,13 +11,13 @@ server {
 	root /home/ubuntu/stuff/public_html;
 
 	index index.html index.htm;
-	
+
 	location / {
 	}
 
-	location /api/ {
+	location /api/ornefni/ {
 		# Proxy
+		rewrite /api/ornefni/(.*) /$1 break;
 		proxy_pass	http://localhost:5000/;
 	}
 }
-

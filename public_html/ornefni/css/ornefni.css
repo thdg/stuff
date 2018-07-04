@@ -1,3 +1,10 @@
+h1, h2, h3, h4 {
+    font-family: 'Eagle Lake', cursive;
+}
+
+.row [class^="col"] {
+    margin: 0px 2%;
+}
 
 .header {
     background-color: #2c1d4e;
@@ -13,27 +20,57 @@
 }
 
 .forms {
-    background-color: #fff5e7;
+    background-color: #fff6da;
 
     border-top: 2px solid #c09005;
-    margin-top: -2px;
 }
 .names {
-    border: 2px solid #c09005;
-    border-left: none;
-    border-right: none;
+    background-color: #fff6da; // old partchment #fff5e7;
+    padding: 20px 0;
+    min-height: 250px;
 }
 
 .names ul {
     margin: 30px auto;
     width: 400px;
     padding: 30px 80px;
-    border: 1px solid #ddd;
+
+    font-size: 18px;
+    border-width: 3px 0 3px 0;
+    border-style: double;
+    border-color: #c09005;
+    background-color: #fff6da;
+    list-style: none;
+    font-family: "Oldenburg";
+}
+
+.names ul:before {
+    content: "";
+
+}
+
+.names li {
+    padding-left: 1.5em;
+    position: relative;
+}
+
+.names li:after {
+      content: "";
+      height: .4em;
+      width: .4em;
+      display: block;
+      background: #8f0f0f;
+      position: absolute;
+      transform: rotate(45deg);
+      top: .65em;
+      left: 0;
+      border: 1px outset #8f0f0f;
 }
 
 .footer {
     padding: 30px 0;
 
+    border-top: 2px solid #c09005;
     background-color: #242227;
     color: white;
 }
@@ -60,25 +97,33 @@
     width: 200px;
     height: 60px;
     margin: 0px 2px;
+    margin-bottom: -2px;
 
-    border-radius: 5px 5px 0px 0px;
-    background-color: #fff5e7;
+    cursor: pointer;
+
+    box-sizing: border-box;
+    border-radius: 4px 4px 0px 0px;
+    background-color: #fff6da;
     border: 2px solid #c09005;
 
     line-height: 2;
 }
 .tab.selected {
-    border-bottom-color: #fff5e7;
+    border-bottom-width: 0px;
 }
 .tab h2 {
     margin: 0;
     height: 100%;
     vertical-align: middle;
+    font-size: 28px;
 }
 
+.groups {
+    padding: 25px 0 15px;
+}
 .groups .radio-button {
-    border: 1px solid #ffe4bf;
-    border-radius: 3px;
+    border: 3px double #bc9528;
+    border-radius: 2px;
     margin: 10px 0;
 }
 
@@ -90,40 +135,42 @@
     margin: 0px;
     display: block;
     cursor: pointer;
+    font-family: "Oldenburg";
 }
 .radio-button.active {
-    background-color: #ffe4bf;
+    background-color: #fbecc1;
+    border-color: #bc9528;
 }
 
 .button {
     text-align: center;
     padding: 10px 20px 30px;
 }
+.button .wrapper {
+    width: 200px;
+    border: 2px solid black;
+    margin: 0 auto;
+}
 .button button {
-    border: none;
-    border-radius: 5px;
+    width: 100%;
+    border: 2px outset #690c0c;
     background-color: #8f0f0f;
     color: white;
     padding: 10px 30px;
 
     cursor: pointer;
+
+    font-size: 13px;
+    text-transform: uppercase;
+    font-family: 'Oldenburg', cursive;
 }
 .button button:hover,
-.button button:active,
-.button button:focus {
+.button button:active {
     background-color: #690c0c;
+    border-style: inset;
+    outline: none;
 }
 
-.icon {
-  display: block;
-  text-indent: -9999px;
-  width: 100px;
-  height: 82px;
-  background-size: 100px 82px;
-}
-.icon-map {
-  background: url(../icons/baseline-map-24px.svg);
-}
-.icon-npc {
-  background: url(../icons/baseline-face-24px.svg);
+form.hidden {
+    display: none;
 }
