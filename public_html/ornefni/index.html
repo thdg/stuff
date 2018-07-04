@@ -235,8 +235,14 @@
 
                     var form = event.target;
                     var group = form.querySelector(".radio-button.active input").value;
-                    var seed = form.querySelector(".seed input").value;
+                    var seed = form.querySelector(".seed input").value.trim();
                     getNames(group, 11, seed, true);
+                    ga('send', {
+                      hitType: 'event',
+                      eventCategory: 'Örnefni',
+                      eventAction: form.id,
+                      eventLabel: group
+                    })
                 }
             }
         </script>
