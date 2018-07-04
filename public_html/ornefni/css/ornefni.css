@@ -64,6 +64,10 @@ h1, h2, h3, h4 {
         width: auto;
         padding: 20px 30px;
     }
+    .names .error {
+      margin: 0;
+      padding: 20px 0;
+    }
 }
 
 .names ul:before {
