@@ -278,7 +278,15 @@
                       eventCategory: 'Örnefni',
                       eventAction: form.id,
                       eventLabel: group
-                    })
+                    });
+                    if (seed.length > 0) {
+                        ga('send', {
+                          hitType: 'event',
+                          eventCategory: 'Örnefni',
+                          eventAction: (reversed ? "vidskeyti" : "forskeyti"),
+                          eventLabel: seed
+                        });
+                    }
                 }
             }
         </script>
