@@ -85,6 +85,12 @@
                         </div>
                     </div>
 
+                    <div class="seed-type">
+                        <input type="radio" id="for-map" name="reversed" value="for" checked />
+                        <label for="for-map">Forskeyti:</label>
+                        <input type="radio" id="vid-map" name="reversed" value="vid"/>
+                        <label for="vid-map">Viðskeyti:</label>
+                    </div>
                     <div class="seed">
                         <label for="map-seed">Forskeyti:</label>
                         <input id="map-seed" type="text" name="seed" />
@@ -118,6 +124,12 @@
                         </div>
                     </div>
 
+                    <div class="seed-type">
+                        <input type="radio" id="for-npc" name="reversed" value="for" checked />
+                        <label for="for-npc">Forskeyti:</label>
+                        <input type="radio" id="vid-npc" name="reversed" value="vid"/>
+                        <label for="vid-npc">Viðskeyti:</label>
+                    </div>
                     <div class="seed">
                         <label for="npc-seed">Forskeyti:</label>
                         <input id="npc-seed" type="text" name="seed" />
@@ -191,14 +203,32 @@
                 container.appendChild(error);
             }
 
-            function getNames(group, n, seed, filter) {
+            function getUrlParams(obj) {
+                var params = [];
+                for (var key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        params.push(key + "=" + obj[key]);
+                    }
+                }
+                if (params.length > 0) {
+                    return "?" + params.join("&");
+                } else {
+                    return "";
+                }
+            }
+
+            function getNames(group, n, seed, filter, reversed) {
                 var url = [
                     "/api/ornefni",
                     group,
                     n,
                     ""].join("/");
                 if (seed) url += seed + "/"
-                if (filter) url += "?ekkitil=1"
+                params = {
+                    "ekkitil": filter,
+                    "aftur": reversed
+                }
+                url += getUrlParams(params);
 
                 var callback = function(response) {
                     var names = response["names"];
@@ -232,7 +262,7 @@
                         return;
                     }
 
-                    // Prevent submitting to often
+                    // Prevent submitting too often
                     canSubmit = false;
                     window.setTimeout(function() {
                         canSubmit = true;
@@ -241,7 +271,8 @@
                     var form = event.target;
                     var group = form.querySelector(".radio-button.active input").value;
                     var seed = form.querySelector(".seed input").value.trim();
-                    getNames(group, 11, seed, true);
+                    var reversed = form.querySelector(".seed-type input:checked").value == "vid";
+                    getNames(group, 11, seed, true, reversed);
                     ga('send', {
                       hitType: 'event',
                       eventCategory: 'Örnefni',

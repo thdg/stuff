@@ -177,12 +177,13 @@ h1, h2, h3, h4 {
     border-color: #bc9528;
 }
 
+.seed-type,
 .seed {
     text-align: center;
     font-family: "Oldenburg";
 }
 .seed label {
-    display: block;
+    display: none;
 }
 .seed input {
     margin: 0 auto;
