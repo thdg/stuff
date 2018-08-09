@@ -1,4 +1,4 @@
-l.comserver {
+server {
 	listen 443 ssl;
 	server_name xn--orsteinn-o6a.is;
 	return 301 http://$host$request_uri;
