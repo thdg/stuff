@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>Franskar húsnúmeraplötur</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Rozha+One&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet"> 
+	</head>
+	<body>
+		<h1>Franskar húsnúmeraplötur</h1>
+		<form id="number-form">
+			<input id="number-value" type="text" name="number">
+			<input type="submit" value="Teikna">
+		</form>
+		<canvas id="drawing" width="1000" height="600"></canvas>
+		<script type="text/javascript">
+			const canvas = document.getElementById('drawing');
+			const ctx = canvas.getContext('2d');
+
+			function render(number) {
+				ctx.fillStyle = 'rgb(18, 41, 91)';
+				// rgb(18, 41, 91)
+
+				top = 0;
+				left = 0;
+				w = 1000;
+				h = 600;
+				p = w/18;
+				r = w/15;
+
+				ctx.fillRect(0, 0, w, h);
+
+				ctx.strokeStyle = 'white';
+				ctx.lineWidth = w/80;
+
+				ctx.beginPath();
+			    ctx.arc(p, p, r, Math.PI / 2, 0, true);
+			    ctx.lineTo(w-p-r, p);
+			    ctx.arc(w-p, p, r, Math.PI, Math.PI / 2, true);
+			    ctx.lineTo(w-p, h-p-r)
+			    ctx.arc(w-p, h-p, r, Math.PI * 3/2, Math.PI, true);
+			    ctx.lineTo(p+r, h-p);
+			    ctx.arc(p, h-p, r, 0, Math.PI * 3/2, true);
+			    ctx.lineTo(p, p+r);
+			    ctx.arc(p, p, r, Math.PI / 2, 0, true);
+			    ctx.stroke();
+
+			    //ctx.font = "210px Rozha One";
+			    ctx.font = (w * 190/500) + "px Abril Fatface";
+			    ctx.textAlign = "center";
+			    ctx.textBaseline = "top";
+			    ctx.fillStyle = "white";
+
+			    var text_metrics = ctx.measureText(number);
+			    var text_height = text_metrics.actualBoundingBoxDescent - text_metrics.actualBoundingBoxAscent;
+			    ctx.fillText(number, w/2, h/2 - text_height/2);
+	    	}
+
+	    	document.getElementById("number-form").addEventListener("submit", function(e){
+	    		e.preventDefault();
+	    		var n = document.getElementById("number-value").value;
+	    		render(n);
+			});
+
+		</script>
+
+</html>
