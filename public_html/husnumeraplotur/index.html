@@ -1,10 +1,38 @@
-<html>
+<!DOCTYPE html>
+<html lang="is">
 	<head>
 		<title>Franskar húsnúmeraplötur</title>
+
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Rozha+One&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet"> 
+
+		<style>
+			body {
+				background-color: beige;
+				font-family: Abril Fatface;
+			}
+			h1 {
+				text-align: center;
+			}
+			form {
+				text-align: center;
+				padding: 20px;
+				max-width: 300px;
+				margin: auto;
+				border: dashed;
+			}
+			#drawing {
+				margin: 10px auto;
+				padding-top: 25px;
+    			display: block;
+			}
+
+		</style>
 	</head>
 	<body>
 		<h1>Franskar húsnúmeraplötur</h1>
@@ -25,7 +53,7 @@
 				left = 0;
 				w = 1000;
 				h = 600;
-				p = w/18;
+				p = w/20;
 				r = w/15;
 
 				ctx.fillRect(0, 0, w, h);
