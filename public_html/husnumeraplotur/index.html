@@ -46,47 +46,67 @@
 			const ctx = canvas.getContext('2d');
 
 			function render(number) {
-				ctx.fillStyle = 'rgb(18, 41, 91)';
-				// rgb(18, 41, 91)
-
-				top = 0;
-				left = 0;
 				w = 1000;
 				h = 600;
+				top = 0;
+				left = 0;
 				p = w/20;
 				r = w/15;
 
-				ctx.fillRect(0, 0, w, h);
+				ctx.font = (w * 190/500) + "px Abril Fatface";
+				ctx.textBaseline = "top";
+				ctx.textAlign = "left";
+
+				text_metrics = ctx.measureText(number);
+				text_height = text_metrics.actualBoundingBoxDescent - text_metrics.actualBoundingBoxAscent;
+				text_width = text_metrics.actualBoundingBoxRight - text_metrics.actualBoundingBoxLeft;
+
+				W = w;
+				if (text_width > w*0.7) {
+					W = text_width + 7*p;
+				}
+				canvas.width = W;
+
+				ctx.fillStyle = 'rgb(18, 41, 91)';
+				// rgb(18, 41, 91)
+
+				//ctx.font = "210px Rozha One";
+				ctx.font = (w * 190/500) + "px Abril Fatface";
+				ctx.textBaseline = "top";
+				ctx.textAlign = "left";
+
+				text_metrics = ctx.measureText(number);
+				text_height = text_metrics.actualBoundingBoxDescent - text_metrics.actualBoundingBoxAscent;
+				text_width = text_metrics.actualBoundingBoxRight - text_metrics.actualBoundingBoxLeft;
+			    
+				ctx.textAlign = "center";
+
+				ctx.fillRect(0, 0, W, h);
 
 				ctx.strokeStyle = 'white';
 				ctx.lineWidth = w/80;
 
 				ctx.beginPath();
-			    ctx.arc(p, p, r, Math.PI / 2, 0, true);
-			    ctx.lineTo(w-p-r, p);
-			    ctx.arc(w-p, p, r, Math.PI, Math.PI / 2, true);
-			    ctx.lineTo(w-p, h-p-r)
-			    ctx.arc(w-p, h-p, r, Math.PI * 3/2, Math.PI, true);
-			    ctx.lineTo(p+r, h-p);
-			    ctx.arc(p, h-p, r, 0, Math.PI * 3/2, true);
-			    ctx.lineTo(p, p+r);
-			    ctx.arc(p, p, r, Math.PI / 2, 0, true);
-			    ctx.stroke();
+				ctx.arc(p, p, r, Math.PI / 2, 0, true);
+				ctx.lineTo(W-p-r, p);
+				ctx.arc(W-p, p, r, Math.PI, Math.PI / 2, true);
+				ctx.lineTo(W-p, h-p-r)
+				ctx.arc(W-p, h-p, r, Math.PI * 3/2, Math.PI, true);
+				ctx.lineTo(p+r, h-p);
+				ctx.arc(p, h-p, r, 0, Math.PI * 3/2, true);
+				ctx.lineTo(p, p+r);
+				ctx.arc(p, p, r, Math.PI / 2, 0, true);
+				ctx.stroke();
 
-			    //ctx.font = "210px Rozha One";
-			    ctx.font = (w * 190/500) + "px Abril Fatface";
-			    ctx.textAlign = "center";
-			    ctx.textBaseline = "top";
-			    ctx.fillStyle = "white";
-
-			    var text_metrics = ctx.measureText(number);
-			    var text_height = text_metrics.actualBoundingBoxDescent - text_metrics.actualBoundingBoxAscent;
-			    ctx.fillText(number, w/2, h/2 - text_height/2);
-	    	}
+				ctx.fillStyle = "white";
+				ctx.fillText(number, W/2, h/2 - text_height/2);
+				console.log("render complete");
+			}
 
 	    	document.getElementById("number-form").addEventListener("submit", function(e){
 	    		e.preventDefault();
 	    		var n = document.getElementById("number-value").value;
+			console.log("n:", n);
 	    		render(n);
 			});
 
