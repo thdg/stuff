@@ -117,13 +117,14 @@ h1, h2, h3, h4 {
     box-sizing: border-box;
 }
 
-.tab {
+.tab-label {
     display: inline-block;
     text-align: center;
-    width: 200px;
+    min-width: 170px;
     height: 60px;
     margin: 0px 2px;
     margin-bottom: -2px;
+    padding: 0px 15px;
 
     cursor: pointer;
 
@@ -134,10 +135,10 @@ h1, h2, h3, h4 {
 
     line-height: 2;
 }
-.tab.selected {
+.tab-label.selected {
     border-bottom-width: 0px;
 }
-.tab h2 {
+.tab-label h2 {
     margin: 0;
     height: 100%;
     vertical-align: middle;
@@ -145,11 +146,11 @@ h1, h2, h3, h4 {
 }
 
 @media only screen and (max-width: 719px) {  /* 720px */
-    .tab {
+    .tab-label {
         width: 45%;
         height: 50px;
     }
-    .tab h2 {
+    .tab-label h2 {
         font-size: 22px;
     }
 }
@@ -222,7 +223,7 @@ h1, h2, h3, h4 {
     outline: none;
 }
 
-form.hidden {
+.tab.hidden {
     display: none;
 }
 
