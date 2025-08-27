@@ -198,10 +198,16 @@
 // Names have been changed to be Icelandic
 
 function load_txt_file(fname) {
-  var response = fetch(fname);
-  var text = response.text();
-  var list = text.split('\n').map(line => line.trim()).filter(Boolean);
-  return list;	
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", fname, false); // false = synchronous
+  xhr.send(null);
+
+  if (xhr.status === 200) {
+    return xhr.responseText.split('\n').map(line => line.trim()).filter(Boolean);
+  } else {
+    console.error("Failed to load file:", xhr.status);
+    return [];
+  }
 }
 var first_names = load_txt_file("first-names.txt");
 var last_names_one = load_txt_file("last-names-one.txt");
@@ -212,14 +218,17 @@ function shuffle(list){
 };
 
 function generate_npc_names(count) {
+    if (first_names.length == 0 || last_names_one.length == 0 || last_names_two.length == 0) {
+	    renderError();
+    }
     var output_string_list = [];
     for (var i=0;i<count;i++) {
         if(i % first_names.length == 0); shuffle(first_names);
         if(i % last_names_one.length == 0) shuffle(last_names_one);
         if(i % last_names_two.length == 0) shuffle(last_names_two);
         output_string_list.push(first_names[i % first_names.length] + " " + last_names_one[i % last_names_one.length] + last_names_two[i % last_names_two.length]);
+
     }
-    //document.querySelector("div.names").html = "<p>"+output_string_list.join(", ");
 												    renderNames(output_string_list);
 }
 
