@@ -197,11 +197,10 @@
 // Based on https://slyflourish.com/random_name_generator.html
 // Names have been changed to be Icelandic
 
-async function load_txt_file(fname) {
-  const response = await fetch(fname);
-  const text = await response.text();
-  const list = text.split('\n').map(line => line.trim()).filter(Boolean);
-  console.log(list);
+function load_txt_file(fname) {
+  var response = fetch(fname);
+  var text = response.text();
+  var list = text.split('\n').map(line => line.trim()).filter(Boolean);
   return list;	
 }
 var first_names = load_txt_file("first-names.txt");
